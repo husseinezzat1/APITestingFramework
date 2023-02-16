@@ -21,6 +21,7 @@ public class API_Service extends API{
      * @return
      */
     public Response getServices(){
+        System.out.print("Getting Services");
         return apiHandler.performGetRequest(servicesServiceName);
     }
 
@@ -30,6 +31,7 @@ public class API_Service extends API{
      * @return
      */
     public Response getService(int serviceId){
+        System.out.println("Getting service's details");
         return apiHandler.performGetRequest(servicesServiceName + serviceId);
     }
 
@@ -83,6 +85,7 @@ public class API_Service extends API{
      * @return
      */
     public Response addNewService(Service service, int expectedStatusCode){
+        System.out.println("Add new service");
         Response response = apiHandler.performPostRequest(servicesServiceName, service);
         response.then().assertThat().statusCode(expectedStatusCode);
         return response;
@@ -95,6 +98,7 @@ public class API_Service extends API{
      * @return
      */
     public Response updateService(int serviceId, Service service){
+        System.out.print("Update an existing service");
         String fullServiceName = servicesServiceName+ serviceId;
         return apiHandler.performPatchRequest(fullServiceName, service);
     }
@@ -105,6 +109,7 @@ public class API_Service extends API{
      * @return
      */
     public Response deleteService(int serviceId){
+        System.out.println("Delete service");
         return apiHandler.performDeleteRequest(servicesServiceName+serviceId);
     }
 
